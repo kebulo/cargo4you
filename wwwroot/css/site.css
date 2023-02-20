@@ -43,6 +43,14 @@ body {
     filter: blur(2px);
 }
 
+.margin-bottom-of {
+    margin-bottom: 0.5rem !important;
+}
+
+.partner-card {
+    box-shadow: 0px 0px 5px #a3a3a3;
+}
+
 .show > .modal-dialog {
     position: absolute;
     right: 0;

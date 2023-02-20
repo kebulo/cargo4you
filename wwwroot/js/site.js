@@ -157,7 +157,8 @@
             this.quotationId = ''; 
             this.request_shippment = false;
             this.price_details = { show_price: false };
-
+            this.errorMessage = "";
+            this.shippmentSuccess = false;
         }
     },
     created: function() {
