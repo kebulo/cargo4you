@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+	<div class="main-head-background"></div>
+	<div class="details-container col-md-5 p-lg-5 mx-auto my-5">
+		<h1 class="display-4 fw-normal">Cargo4You</h1>
+		<p class="lead fw-normal">Best shippment at the best price</p>
+
+        <div class="mb-3">
+			<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cuotationModal">
+				<i class="fas fa-box fs-1"></i> <br />
+				Get quotation!
+			</button>
+		</div>
+
+        <div class="row">
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" placeholder="TRACKING ID" aria-label="Username" aria-describedby="basic-addon1">
+				<button class="btn btn-primary bg-light text-secondary" type="button" id="button-addon1"><b>TRACK</b></button>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<section class="row">
+		<div class="col-12 col-sm-4">
+			<figure class="card">
+				<img class="img-fluid card-img-top" src="https://www.internationaltrucks.com/-/media/Project/International-Trucks/International-Trucks/USA/s13/S13_LT_Image_750x500.jpg" alt="Cargo4You" />
+				<figcaption class="card-body">Cargo4You</figcaption>
+			</figure>
+		</div>
+
+		<div class="col-12 col-sm-4">
+			<figure class="card">
+				<img class="img-fluid card-img-top" src="https://www.internationaltrucks.com/-/media/Project/International-Trucks/International-Trucks/USA/s13/S13_LT_Image_750x500.jpg" alt="Cargo4You" />
+				<figcaption class="card-body">ShipFaster</figcaption>
+			</figure>
+		</div>
+
+		<div class="col-12 col-sm-4">
+			<figure class="card">
+				<img class="img-fluid card-img-top" src="https://www.internationaltrucks.com/-/media/Project/International-Trucks/International-Trucks/USA/s13/S13_LT_Image_750x500.jpg" alt="Cargo4You" />
+				<figcaption class="card-body">MaltaShip</figcaption>
+			</figure>
+		</div>
+	</section>
+</div>
+
+<!-- Quotation Modal -->
+@Html.Raw(File.ReadAllText("./Views/Shared/_QuotationModal.html"))

@@ -1,0 +1,94 @@
+﻿<!-- Quotation Modal -->
+<div class="modal modal-fullscreen modal-fullscreen-md-down" id="cuotationModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="cuotationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content cuotation-modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cuotationModalLabel">Quotation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closeModal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <p class="alert alert-warning" v-if="errorMessage" role="alert">
+                    {{errorMessage}}
+                </p>
+
+                <form class="row mb-3" @submit.prevent="getQuotation" v-if="!request_shippment">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="height-icon">
+                            <i class="fas fa-ruler-combined"></i>
+                        </span>
+                        <input type="number" v-model="quotation.width" class="form-control" placeholder="Width" id="width" />
+                        <input type="number" v-model="quotation.height" class="form-control" placeholder="Height" id="height" />
+                        <input type="number" v-model="quotation.depth" class="form-control" placeholder="Depth" id="depth" />
+                        <span class="input-group-text" id="height-icon">CM</span>
+                    </div>
+
+                    <div class="mb-3 col-12">
+                        <div class="input-group">
+                            <span class="input-group-text" id="weight-icon">
+                                <i class="fas fa-weight"></i>
+                            </span>
+                            <input type="number" v-model="quotation.weight" class="form-control" placeholder="Weight" id="weight" />
+                            <span class="input-group-text" id="height-icon">Kg</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Get Quotation</button>
+                </form>
+
+                <div class="row mb-3 text-center" v-if="price_details.show_price">
+                    <div class="col">
+                        <div class="card price-container mb-4 rounded-3 shadow-sm border-primary">
+                            <div class="card-header py-3 text-white bg-white border-primary">
+                                <h5 class="my-0 fw-normal text-primary" v-if="!request_shippment">Shipment Fare</h5>
+                                <h5 class="my-0 fw-normal text-primary" v-if="request_shippment">Request Shipment</h5>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">€ {{price_details.price}}</h1>
+                                <div class="row mt-3 mb-4">
+                                    <div class="col-6">
+                                        <b><small>DELIVERED BY</small></b><br />
+                                        {{price_details.company}}
+                                    </div>
+                                    <div class="col-6">
+                                        <b><small>ARRIVES ON</small></b><br />
+                                        <small>Tue, Feb 16</small>
+                                    </div>
+                                </div>
+
+                                <button type="button" v-if="!request_shippment" @click="request_shippment=true" class="w-100 btn btn-lg btn-primary">Request Shipment! <i class="fas fa-shipping-fast"></i></button>
+
+                                <form @submit.prevent="saveShippment" v-if="request_shippment && !shippmentSuccess">
+                                    <div class="form-floating mb-3">
+                                        <input required type="text" v-model="shipmentData.ClientName" class="form-control" id="name" placeholder="Name" aria-describedby="name-icon" />
+                                        <label for="name"><i class="fas fa-user"></i> Name*</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input required type="text" v-model="shipmentData.Address" class="form-control" id="address" placeholder="Address" aria-describedby="address-icon" />
+                                        <label for="address"><i class="fas fa-house-user"></i> Address*</label>
+                                    </div>
+
+                                    <div class="form-floating mb-3">
+                                        <input required type="text" v-model="shipmentData.PhoneNumber" class="form-control" id="phone" placeholder="Phone Number" aria-describedby="phone-icon" />
+                                        <label for="phone"><i class="fas fa-phone"></i> Phone*</label>
+                                    </div>
+
+                                    <button type="submit" class="w-100 btn btn-lg btn-primary">Request Shipment</button>
+                                </form>
+
+                                <div v-if="shippmentSuccess">
+                                    <h5 class="text-primary">Thank you for choosing our services</h5>
+                                    <p class="alert alert-primary">Your shipment request was saved successfully, in no time one of our agents will get in touch.</p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</div>
