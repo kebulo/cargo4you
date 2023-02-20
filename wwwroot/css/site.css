@@ -17,6 +17,10 @@ body {
   margin-bottom: 60px;
 }
 
+.fw-main-title {
+    font-weight: 700 !important;
+}
+
 #cuotationModal {
     background: #000000a1;
 }
@@ -37,7 +41,7 @@ body {
     left: 0;
     top: 0;
     filter: blur(2px);
-} 
+}
 
 .show > .modal-dialog {
     position: absolute;
@@ -45,6 +49,7 @@ body {
     height: 100vh;
     overflow: auto;
     margin: 0;
+    width: 100%;
 }
 
 .show > .modal-dialog > .cuotation-modal-content {
